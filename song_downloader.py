@@ -43,7 +43,7 @@ for item in playlist_link_list:
     os.makedirs(output_directory, exist_ok=True)
 
     result = subprocess.run([
-        "python3",
+        sys.executable,
         "-m", "spotdl",
         "download",
         link,
@@ -52,4 +52,10 @@ for item in playlist_link_list:
 
     print("Stdout:", result.stdout)
     print("Stderr:", result.stderr)
+    
+    download_next_playlist = input("Download next playlist? (y/n)")
+    if download_next_playlist == "n":
+        sys.exit(1)
+    else:
+        pass
 
